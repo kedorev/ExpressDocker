@@ -17,11 +17,15 @@ services:
     build:
       context: ./
       dockerfile: Docker/node.dockerfile
-    working_dir: /home/NodeProject/app
     volumes:
       - ./App:/home/NodeProject/app
     ports:
       - 3000:3000
+
+
+  browser-sync:
+    image: node:8.9.4
+    working_dir: /home/NodeProject/app
 
 
   phpmyadmin:
@@ -30,6 +34,7 @@ services:
       - db
     ports:
       - 8080:80
+
 
 
 volumes:
