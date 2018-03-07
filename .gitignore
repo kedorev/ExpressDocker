@@ -1,0 +1,8 @@
+docker-compose.override.yml
+App/node_modules
+.idea
+Supprimerait .idea/inspectionProfiles/
+Supprimerait .idea/workspace.xml
+Supprimerait App/public/images/
+Supprimerait App/public/javascripts/
+Supprimerait NodeProject/
