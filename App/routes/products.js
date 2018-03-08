@@ -18,8 +18,27 @@ router.get('/list', function(req, res, next) {
 
 });
 
+router.get('/add', (req, res, next) => {
+
+    res.render('add', {title: "addProduct", success: false });
+});
+
+router.post('/add', (req, res, next) => {
+
+    const result = { name: req.body.Name, priceEur: req.body.Price};
+    fakedb.add(result)
+        .then(data => {
+
+            res.render('add', {title: "addProduct", success: true });
+        })
+        .catch(err => {
+            next(err);
+        });
+});
+
+
+
 router.get('/:id', function(req, res, next){
-    let aData = {};
     fakedb.getOne(req.params.id)
         .then(dataProduct => {
             return currencies.getCurrencies('forex.json')
