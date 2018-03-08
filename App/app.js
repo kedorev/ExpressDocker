@@ -73,8 +73,19 @@ app.use(function(err, req, res, next) {
   res.locals.error = req.app.get('env') === 'development' ? err : {};
   // render the error page
     console.log(err.message);
-  res.status(err.status || 500);
-  res.render('error');
+    if((err.status >= 500 && err.status <600 || err.status === undefined))
+    {
+        res.status(err.status || 500);
+        console.log(err.message);
+        console.log(err.status);
+        res.render('errorServer');
+    }
+    else
+    {
+        res.status(err.status);
+        res.render('error');
+    }
+
 
 
 });
