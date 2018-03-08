@@ -1,7 +1,9 @@
 var express = require('express');
 var router = express.Router();
 const fakedb = require('../db/fake-db');
-const forex = require('../db/forex');
+//const forex = require('../db/forex');
+var path = require('path');
+const currencies = require(path.join(__dirname,'..','controller','currencies'));
 
 /* GET list page. */
 router.get('/list', function(req, res, next) {
@@ -15,8 +17,6 @@ router.get('/list', function(req, res, next) {
         });
 
 });
-
-
 
 router.get('/add', (req, res, next) => {
 
@@ -40,8 +40,32 @@ router.post('/add', (req, res, next) => {
 router.get('/:id', function(req, res, next){
     fakedb.getOne(req.params.id)
         .then(dataProduct => {
-            console.log(dataProduct)
+            return currencies.getCurrencies('forex.json')
+                .then(data => {
+                    const aDiv = [];
+                    for (let element in data) {
+                         const promise = currencies.getConverCurrency('forex.json', element, dataProduct.priceEur)
+                            .then(data2 => {
+                                return {'value': data2, 'key': element};
+                            })
+                            .catch(err => {
+                                console.error(err)
+                            });
+                        aDiv.push(promise);
+                    }
+                    return Promise.all(aDiv);
+                })
+                .catch(err => {
+                    next(err);
+                });
         })
+        .then( (data) =>
+            {fakedb.getOne(req.params.id)
+                .then(dataProduct => {
+                    res.render('detail', {title: 'detail', prices: data, 'euroPrice': dataProduct.priceEur, 'name': dataProduct.name});
+                })
+            }
+        )
         .catch(err => {
            next(err)
         });
