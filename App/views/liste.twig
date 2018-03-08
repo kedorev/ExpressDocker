@@ -10,9 +10,9 @@
     <div class="d-flex flex-wrap justify-content-around">
         {% for item in data %}
             <div class="card align-self-stretch p-2 mb-2" style="width: 18rem;">
-                <img class="card-img-top" src="http://via.placeholder.com/350?text={{item.name}}" alt="{{item.name}}">
+                <img class="card-img-top" src="http://via.placeholder.com/350?text={{item.name|escape}}" alt="{{item.name|escape}}">
                 <div class="card-body">
-                    <h5 class="card-title"> {{item.name}}</h5>
+                    <h5 class="card-title">{{item.name|escape}}</h5>
                     <p class="card-text"><span class="badge badge-secondary">Price</span> {{item.priceEur}} €</p>
                     <div class="text-center">
                         <a href="/products/{{item.id}}" class="btn btn-primary">Product details</a>
@@ -21,6 +21,5 @@
             </div>
         {% endfor %}
     </div>
-    
 {% endblock %}
  
