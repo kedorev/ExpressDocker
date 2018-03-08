@@ -1,13 +1,14 @@
 version: '2'
 services:
   node:
-    build:
-      context: ./
-      dockerfile: Docker/node.dockerfile
+    image: node:8.9.4
+    working_dir: /home/NodeProject/app
     volumes:
       - ./App:/home/NodeProject/app
     ports:
       - 3000:3000
+    command: "npm start"
+
 
 volumes:
   dbdata:
