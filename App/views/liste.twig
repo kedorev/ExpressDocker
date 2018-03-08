@@ -3,9 +3,14 @@
 
 {% block body %}
     <h1>{{title}}</h1>
-
+    {#{{ dump(data) }}#}
     <ul>
-        <li>
+        {% for item in data %}
+            <li>{{item.name}} : {{item.priceEur}}€</li>
+        {% endfor %}
+    </ul>
+{#    <ul>
+      <li>
             first element
         </li>
         <li>
@@ -20,5 +25,5 @@
         <li>
             4 element
         </li>
-    </ul>
+    </ul>#}
 {% endblock %}

@@ -9,7 +9,7 @@ var router = express.Router();
 
 var index = require('./routes/index');
 var users = require('./routes/users');
-var list = require('./routes/liste');
+var products = require('./routes/products');
 var privateSection = require('./routes/privateSection');
 
 var app = express();
@@ -52,7 +52,7 @@ app.use('*', (req,res,next) => {
 
 app.use('/', index);
 app.use('/users', users);
-app.use('/list', list);
+app.use('/products', products);
 app.use('/private', privateSection);
 
 
