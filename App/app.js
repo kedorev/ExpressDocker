@@ -8,7 +8,7 @@ var serveStatic = require('serve-static')
 
 var index = require('./routes/index');
 var users = require('./routes/users');
-var list = require('./routes/liste');
+var products = require('./routes/products');
 var privateSection = require('./routes/privateSection');
 
 var app = express();
@@ -30,7 +30,7 @@ app.use(cookieParser());
 
 app.use('/', index);
 app.use('/users', users);
-app.use('/list', list);
+app.use('/products', products);
 app.use('/private', privateSection);
 
 // catch 404 and forward to error handler
