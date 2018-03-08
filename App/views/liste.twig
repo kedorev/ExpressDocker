@@ -2,12 +2,24 @@
 
 
 {% block body %}
-    {#{{ dump(data) }}#}
-    <ul>
-        {% for item in data %}
-            <li><a href="/products/{{ item.id }}">{{item.name|escape}} : {{item.priceEur}}€</a></li>
+    <h1 class="text-center">
+        {{title}}
+        <a class="btn btn-info float-right" href="/products/add"><span class="oi oi-plus" title="icon name" aria-hidden="true"></span> Add a product</a>
+    </h1>
 
+    <div class="d-flex flex-wrap justify-content-around">
+        {% for item in data %}
+            <div class="card align-self-stretch p-2 mb-2" style="width: 18rem;">
+                <img class="card-img-top" src="http://via.placeholder.com/350?text={{item.name|escape}}" alt="{{item.name|escape}}">
+                <div class="card-body">
+                    <h5 class="card-title">{{item.name|escape}}</h5>
+                    <p class="card-text"><span class="badge badge-secondary">Price</span> {{item.priceEur}} €</p>
+                    <div>
+                        <a href="/products/{{item.id}}" class="btn btn-primary"><span class="oi oi-external-link"></span> Product details</a>
+                    </div>                        
+                </div>
+            </div>
         {% endfor %}
-    </ul>
-    <a href="/products/add">Ajouter un nouveau produit</a> </br>
+    </div>
 {% endblock %}
+ 

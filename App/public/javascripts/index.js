@@ -10,9 +10,11 @@ $('document').ready(function(){
 async function counter()
 {
     const counter = $('#counter');
+    counter.css('display','flex');
     while(counter.html() > 0)
     {
-        await sleep(2000);
+        await sleep(1000);
         counter.text(counter.html() - 1);
     }
+    counter.hide();
 }

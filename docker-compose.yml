@@ -7,8 +7,23 @@ services:
       - ./App:/home/NodeProject/app
     ports:
       - 3000:3000
-    command: "npm start"
+    command: "npx nodemon index.js"
 
+  browser-sync:
+    image: node:8.9.4
+    working_dir: /app
+    user: node
+    command: >
+      App/node_modules/.bin/browser-sync start
+      --port 4000
+      --proxy "node:3000"
+      --no-notify
+      --files "**/*"
+      --no-open
+    volumes:
+      - .:/app
+    ports:
+      - '4000:4000'
 
 volumes:
   dbdata:
