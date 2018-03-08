@@ -16,7 +16,29 @@ router.get('/list', function(req, res, next) {
 
 });
 
-router.get('/:id', function(req, res, nex){
+
+
+router.get('/add', (req, res, next) => {
+
+    res.render('add', {title: "addProduct" });
+});
+
+router.post('/add', (req, res, next) => {
+
+    const result = { name: req.body.Name, priceEur: req.body.Price};
+    fakedb.add(result)
+        .then(data => {
+
+            res.render('add', {title: "addProduct", success: true });
+        })
+        .catch(err => {
+            next(err);
+        });
+});
+
+
+
+router.get('/:id', function(req, res, next){
     fakedb.getOne(req.params.id)
         .then(dataProduct => {
             console.log(dataProduct)
