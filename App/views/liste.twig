@@ -4,7 +4,7 @@
 {% block body %}
     <h1 class="text-center">
         {{title}}
-        <a class="btn btn-info float-right" href="/products/add">Add a product</a>
+        <a class="btn btn-info float-right" href="/products/add"><span class="oi oi-plus" title="icon name" aria-hidden="true"></span> Add a product</a>
     </h1>
 
     <div class="d-flex flex-wrap justify-content-around">
@@ -14,8 +14,8 @@
                 <div class="card-body">
                     <h5 class="card-title">{{item.name|escape}}</h5>
                     <p class="card-text"><span class="badge badge-secondary">Price</span> {{item.priceEur}} €</p>
-                    <div class="text-center">
-                        <a href="/products/{{item.id}}" class="btn btn-primary">Product details</a>
+                    <div>
+                        <a href="/products/{{item.id}}" class="btn btn-primary"><span class="oi oi-external-link"></span> Product details</a>
                     </div>                        
                 </div>
             </div>

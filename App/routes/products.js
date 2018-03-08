@@ -28,7 +28,6 @@ router.post('/add', (req, res, next) => {
     const result = { name: req.body.Name, priceEur: req.body.Price};
     fakedb.add(result)
         .then(data => {
-
             res.render('add', {title: "addProduct", success: true });
         })
         .catch(err => {
