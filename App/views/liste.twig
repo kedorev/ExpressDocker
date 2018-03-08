@@ -2,11 +2,10 @@
 
 
 {% block body %}
-    <h1>{{title}}</h1>
     {#{{ dump(data) }}#}
     <ul>
         {% for item in data %}
-            <li>{{item.name}} : {{item.priceEur}}€</li>
+            <li>{{item.name|escape}} : {{item.priceEur}}€</li>
         {% endfor %}
     </ul>
 {#    <ul>
@@ -26,4 +25,5 @@
             4 element
         </li>
     </ul>#}
+    <a href="/products/add">Ajouter un nouveau produit</a> </br>
 {% endblock %}
