@@ -1,5 +1,9 @@
 $('document').ready(function(){
-    counter();
+
+    $(document).on('click', '#counterBtn', function(){
+        $(this).prop("disabled", true);
+        counter();
+    });
 });
 
 

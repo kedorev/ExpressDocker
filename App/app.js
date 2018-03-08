@@ -13,6 +13,7 @@ var list = require('./routes/liste');
 var privateSection = require('./routes/privateSection');
 
 var app = express();
+const devMode = true;
 
 //static file
 app.use(serveStatic(path.join(__dirname, 'public')));
@@ -37,13 +38,16 @@ app.use('*', (req,res,next) => {
     const minMin = 49;
     const minMax = 59;
     const minCurrent = new Date().getMinutes();
-    if(minCurrent >= minMin && minCurrent <= minMax)
+    if(minCurrent >= minMin && minCurrent <= minMax && devMode === false)
     {
         var err = new Error('Server busy');
         err.status = 509;
         next(err);
     }
-    next();
+    else
+    {
+        next();
+    }
 });
 
 app.use('/', index);
@@ -68,7 +72,7 @@ app.use(function(err, req, res, next) {
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
   // render the error page
-    console.log('erreor');
+    console.log(err.message);
   res.status(err.status || 500);
   res.render('error');
 
