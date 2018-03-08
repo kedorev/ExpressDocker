@@ -2,11 +2,8 @@
 <html>
   <head>
       {% block header %}
-
           <meta charset="UTF-8" />
           <title>{% block title %}{% endblock %}</title>
-
-
           {% block stylesheets %}
               <link rel='stylesheet' href='/stylesheets/style.css' />
               <link rel='stylesheet' href='/stylesheets/bootstrap.min.css' />
@@ -14,19 +11,24 @@
               <link rel='stylesheet' href='/stylesheets/bootstrap-reboot.min.css' />
           {% endblock %}
       {% endblock %}
-
-    {% block header %} {% endblock  %}
   </head>
   <body>
-    {% block body %}
-    {% endblock %}
-    {% block footer %}
-        {% block js %}
-            <script src="/javascripts/jquery-3.3.1.min.js"></script>
-            <script src="/javascripts/bootstrap.min.js"></script>
-            <script src="/javascripts/bootstrap.bundle.min.js"></script>
-            <script src="/javascripts/main.js"></script>
+    <div class="body">
+        {% block head %}
+
         {% endblock %}
-    {% endblock %}
+        {% block body %}
+        {% endblock %}
+        {% block footer %}
+            <a href="mailto:email@example.com">contact us by mail</a>
+
+            {% block js %}
+                <script src="/javascripts/jquery-3.3.1.min.js"></script>
+                <script src="/javascripts/bootstrap.min.js"></script>
+                <script src="/javascripts/bootstrap.bundle.min.js"></script>
+                <script src="/javascripts/main.js"></script>
+            {% endblock %}
+        {% endblock %}
+    </div>
   </body>
 </html>
