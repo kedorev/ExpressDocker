@@ -2,28 +2,25 @@
 
 
 {% block body %}
-    <h1>{{title}}</h1>
-    {#{{ dump(data) }}#}
-    <ul>
+    <h1 class="text-center">
+        {{title}}
+        <a class="btn btn-info float-right" href="/products/add">Add a product</a>
+    </h1>
+
+    <div class="d-flex flex-wrap justify-content-around">
         {% for item in data %}
-            <li>{{item.name}} : {{item.priceEur}}€</li>
+            <div class="card align-self-stretch p-2 mb-2" style="width: 18rem;">
+                <img class="card-img-top" src="http://via.placeholder.com/350?text={{item.name}}" alt="{{item.name}}">
+                <div class="card-body">
+                    <h5 class="card-title"> {{item.name}}</h5>
+                    <p class="card-text"><span class="badge badge-secondary">Price</span> {{item.priceEur}} €</p>
+                    <div class="text-center">
+                        <a href="/products/{{item.id}}" class="btn btn-primary">Product details</a>
+                    </div>                        
+                </div>
+            </div>
         {% endfor %}
-    </ul>
-{#    <ul>
-      <li>
-            first element
-        </li>
-        <li>
-            second element
-        </li>
-        <li>
-            3rd element
-        </li>
-        <li>
-            4 element
-        </li>
-        <li>
-            4 element
-        </li>
-    </ul>#}
+    </div>
+    
 {% endblock %}
+ 
