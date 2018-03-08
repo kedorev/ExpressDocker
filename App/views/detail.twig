@@ -1,0 +1,18 @@
+{% extends 'layout.twig' %}
+
+{% block js %}
+    {{ parent() }}
+
+{% endblock %}
+
+{% block body %}
+    <h2> {{  name }} </h2>
+    <ul>
+        <li>
+            EU: {{ euroPrice }}
+        </li>
+        {% for item in prices %}
+            <li>{{item.key}} : {{item.value}}</li>
+        {% endfor %}
+    </ul>
+{% endblock %}

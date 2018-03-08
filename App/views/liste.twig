@@ -6,7 +6,7 @@
     {#{{ dump(data) }}#}
     <ul>
         {% for item in data %}
-            <li>{{item.name}} : {{item.priceEur}}€</li>
+            <li><a href="/products/{{ item.id }}">{{item.name}} : {{item.priceEur}}€</a></li>
         {% endfor %}
     </ul>
 {#    <ul>
