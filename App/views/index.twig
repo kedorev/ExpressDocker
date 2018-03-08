@@ -1,6 +1,16 @@
 {% extends 'layout.twig' %}
 
-{% block body %}
-  <h1>{{title}}</h1>
-  <p>Welcome to {{title}}</p>
+{% block js %}
+    {{ parent() }}
+    <script src="/javascripts/index.js"></script>
 {% endblock %}
+
+{% block body %}
+    <div class="mx-auto text-center"> 
+        <h1>{{title}}</h1>
+        <p>Welcome to {{title}}</p>
+        <button class="btn btn-default" id="counterBtn"><span class="oi oi-timer"></span> Start counter</button>
+    </div>
+    <div class="counter" id="counter">3</div>
+{% endblock %}
+  

@@ -1,0 +1,31 @@
+{% extends 'layout.twig' %}
+
+{% block js %}
+    {{ parent() }}
+    <script src="/javascripts/add.js"></script>
+{% endblock %}
+
+{% block body %}
+    <div class="mb-4">
+        <a class="btn btn-secondary btn-sm" href="/products/list"><span class="oi oi-arrow-circle-left"></span> Back to list</a>
+    </div>
+
+    {% if success %}
+        <div class="alert alert-success" role="alert">
+            Product saved with success
+        </div>        
+    {% endif %}
+
+    <form name="addProduct" method="post">
+        <div class="form-group">
+            <label for="Name">Nom</label>
+            <input type="text" required="required" class="form-control" name="Name" id="Name" aria-describedby="Enter the product name" placeholder="Product name">
+        </div>
+        <div class="form-group">
+            <label for="Price">Prix</label>
+            <input type="number" step="0.01" required="required" class="form-control" name="Price" id="Price" aria-describedby="Enter the product price" placeholder="Product price">
+           {# <small id="emailHelp" class="form-text text-muted">Le prix ne doit pas ⁼.</small>#}
+        </div>
+        <button type="submit" id="submitBtn" class="btn btn-primary">Save</button>
+    </form>
+{% endblock %}

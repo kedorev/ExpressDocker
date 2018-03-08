@@ -1,36 +1,29 @@
 version: '2'
 services:
-  db:
-    image: mysql:5.7
-    volumes:
-      - dbdata:/var/lib/mysql
-    environment:
-      - "MYSQL_DATABASE=NodeProject"
-      - "MYSQL_USER=NodeProject"
-      - "MYSQL_PASSWORD=0000"
-      - "MYSQL_ROOT_PASSWORD=0000"
-    ports:
-      - "3306:3306"
-
-
   node:
-    build:
-      context: ./
-      dockerfile: Docker/node.dockerfile
+    image: node:8.9.4
     working_dir: /home/NodeProject/app
     volumes:
       - ./App:/home/NodeProject/app
     ports:
       - 3000:3000
+    command: "npm start"
 
-
-  phpmyadmin:
-    image: phpmyadmin/phpmyadmin:4.7
-    links:
-      - db
+  browser-sync:
+    image: node:8.9.4
+    working_dir: /app
+    user: node
+    command: >
+      App/node_modules/.bin/browser-sync start
+      --port 4000
+      --proxy "node:3000"
+      --no-notify
+      --files "**/*"
+      --no-open
+    volumes:
+      - .:/app
     ports:
-      - 8080:80
-
+      - '4000:4000'
 
 volumes:
   dbdata:
