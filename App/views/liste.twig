@@ -5,25 +5,9 @@
     {#{{ dump(data) }}#}
     <ul>
         {% for item in data %}
-            <li>{{item.name|escape}} : {{item.priceEur}}€</li>
+            <li><a href="/products/{{ item.id }}">{{item.name|escape}} : {{item.priceEur}}€</a></li>
+
         {% endfor %}
     </ul>
-{#    <ul>
-      <li>
-            first element
-        </li>
-        <li>
-            second element
-        </li>
-        <li>
-            3rd element
-        </li>
-        <li>
-            4 element
-        </li>
-        <li>
-            4 element
-        </li>
-    </ul>#}
     <a href="/products/add">Ajouter un nouveau produit</a> </br>
 {% endblock %}
