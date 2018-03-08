@@ -7,7 +7,7 @@ services:
       - ./App:/home/NodeProject/app
     ports:
       - 3000:3000
-    command: "npx nodemon index.js"
+    command: "npm start"
 
   browser-sync:
     image: node:8.9.4

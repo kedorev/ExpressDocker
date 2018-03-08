@@ -16,5 +16,7 @@ async function counter()
         await sleep(1000);
         counter.text(counter.html() - 1);
     }
+
     counter.hide();
+    window.location.href = "products/list";
 }
