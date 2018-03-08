@@ -7,9 +7,10 @@
             <title>{% block title %}{% endblock %}</title>
             {% block stylesheets %}
                 <link rel='stylesheet' href='/stylesheets/style.css' />
-                <link rel='stylesheet' href='/stylesheets/bootstrap.min.css' />
-                <link rel='stylesheet' href='/stylesheets/bootstrap-grid.min.css' />
-                <link rel='stylesheet' href='/stylesheets/bootstrap-reboot.min.css' />
+                <link rel='stylesheet' href='/stylesheets/bootstrap/bootstrap.min.css' />
+                <link rel='stylesheet' href='/stylesheets/bootstrap/bootstrap-grid.min.css' />
+                <link rel='stylesheet' href='/stylesheets/bootstrap/bootstrap-reboot.min.css' />
+                <link rel="stylesheet" href="/stylesheets/bootstrap/iconic/open-iconic-bootstrap.css" />
             {% endblock %}
         {% endblock %}
     </head>
@@ -34,15 +35,15 @@
                 <footer class="pt-4 my-md-5 pt-md-5 border-top">
                     <div class="row">
                         <div class="col-12 col-md">
-                            <a href="mailto:email@example.com">contact us by mail</a>
+                            <a href="mailto:email@example.com"><span class="oi oi-envelope-closed"></span> Contact us by mail</a>
                             <small class="d-block mb-3 text-muted">&copy; 2018</small>
                         </div>
                     </div>
                 </footer>
                 {% block js %}
                     <script src="/javascripts/jquery-3.3.1.min.js"></script>
-                    <script src="/javascripts/bootstrap.min.js"></script>
-                    <script src="/javascripts/bootstrap.bundle.min.js"></script>
+                    <script src="/javascripts/bootstrap/bootstrap.min.js"></script>
+                    <script src="/javascripts/bootstrap/bootstrap.bundle.min.js"></script>
                     <script src="/javascripts/main.js"></script>
                 {% endblock %}
             {% endblock %}
