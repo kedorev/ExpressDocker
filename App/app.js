@@ -14,6 +14,7 @@ var app = express();
 
 //static file
 app.use(serveStatic(path.join(__dirname, 'public')));
+app.use(serveStatic(path.join(__dirname, 'db')));
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

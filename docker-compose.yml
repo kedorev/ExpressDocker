@@ -1,18 +1,5 @@
 version: '2'
 services:
-  db:
-    image: mysql:5.7
-    volumes:
-      - dbdata:/var/lib/mysql
-    environment:
-      - "MYSQL_DATABASE=NodeProject"
-      - "MYSQL_USER=NodeProject"
-      - "MYSQL_PASSWORD=0000"
-      - "MYSQL_ROOT_PASSWORD=0000"
-    ports:
-      - "3306:3306"
-
-
   node:
     build:
       context: ./
@@ -21,21 +8,6 @@ services:
       - ./App:/home/NodeProject/app
     ports:
       - 3000:3000
-
-
-  browser-sync:
-    image: node:8.9.4
-    working_dir: /home/NodeProject/app
-
-
-  phpmyadmin:
-    image: phpmyadmin/phpmyadmin:4.7
-    links:
-      - db
-    ports:
-      - 8080:80
-
-
 
 volumes:
   dbdata:
