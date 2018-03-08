@@ -1,6 +1,12 @@
 {% extends 'layout.twig' %}
 
+{% block js %}
+    {{ parent() }}
+    <script src="/javascripts/index.js"></script>
+{% endblock %}
+
 {% block body %}
   <h1>{{title}}</h1>
   <p>Welcome to {{title}}</p>
+    <div class="counter" id="counter">3</div>
 {% endblock %}
